@@ -1,4 +1,5 @@
 #include <iostream>
+#include "constants.h"
 
 int main(){
 
@@ -10,16 +11,22 @@ int main(){
     std::string consumption;
     std::getline(std::cin, consumption);
 
-    std::cout << "Fuel €/l: ";
-    std::string cost;
-    std::getline(std::cin, cost);
+    std::cout << "Fuel type (G/D): ";
+    std::string type;
+    std::getline(std::cin, type);
 
     float d = std::stof(distance);
     float c = std::stof(consumption);
-    float co = std::stof(cost);
+    float cost;
+
+    if(type == "G"){
+        cost = GAS_PRICE;
+    }else if(type == "D"){
+        cost = DIESEL_PRICE;
+    }
 
 
-    std::cout << "Cost: "<< d*(c/100)* co <<" €"<< std::endl;
+    std::cout << "Cost: "<< d*(c/100)* cost <<" €"<< std::endl;
 
 
 
