@@ -7,7 +7,7 @@ int main(){
     std::string distance;
     std::getline(std::cin, distance);
 
-    std::cout << "Consumption (l/100k): ";
+    std::cout << "Consumption (l/100km): ";
     std::string consumption;
     std::getline(std::cin, consumption);
 
