@@ -1,19 +1,6 @@
 #include <iostream>
 #include <cctype>
 
-/*int getLastNumber(std::string number) {
-
-    for (int i = number.length() - 1; i >= 0; i--) {
-        
-        if (isdigit(number[i])) {
-            return number[i];
-        }
-    }
-
-    return 0;
-
-}*/
-
 int getLastNumber(std::string str) {
     int lastNumber = 0;
 
