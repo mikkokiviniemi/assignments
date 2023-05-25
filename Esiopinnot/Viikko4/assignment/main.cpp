@@ -106,6 +106,15 @@ std::vector<int> readFileAndFillVector(const std::string& filename) {
     return numbers;
 }
 
+//Prints things
+void prints (std::vector<int> numbers) {
+    std::cout << "The sum of the integers in the list: " << totalSum(numbers) << std::endl;
+    std::cout << "The average of the integers in the list: " << average(numbers) << std::endl;
+    std::cout << "The minimum value in the list: " << minimum(numbers) << std::endl;
+    std::cout << "The maximum value in the list: " << maximum(numbers) << std::endl;
+    std::cout << "The most frequent value in the list: " << frequent(numbers) << std::endl;
+    std::cout << "The difference between the minimum and maximum of the list: " << minmax(numbers) << std::endl;
+}
 
 int main() {
     std::vector<int> numbers;
@@ -126,12 +135,7 @@ int main() {
         return 0;
     }
 
-    //Prints
-    std::cout << "The sum of the integers in the list: " << totalSum(numbers) << std::endl;
-    std::cout << "The average of the integers in the list: " << average(numbers) << std::endl;
-    std::cout << "The minimum value in the list: " << minimum(numbers) << std::endl;
-    std::cout << "The maximum value in the list: " << maximum(numbers) << std::endl;
-    std::cout << "The most frequent value in the list: " << frequent(numbers) << std::endl;
-    std::cout << "The difference between the minimum and maximum of the list: " << minmax(numbers) << std::endl;
+    prints(numbers);
+
     return 0;
 }
