@@ -6,7 +6,7 @@
 #include <fstream>
 
 //Calculates the sum of the list
-int totalSum (std::vector<int> list){
+int totalSum (std::vector<int>& list){
     int sum = 0;
     for (int i : list) {
         sum += i;
@@ -15,22 +15,22 @@ int totalSum (std::vector<int> list){
 }
 
 //Calculates the average of the list
-float average (std::vector<int> list) {
+float average (std::vector<int>& list) {
     return totalSum(list) / (1.00f*list.size());
 }
 
 //Finds the minimum value in the list
-int minimum (std::vector<int> list) {
+int minimum (std::vector<int>& list) {
     return *std::min_element(list.begin(), list.end());
 }
 
 //Finds the maximum value in the list
-int maximum (std::vector<int> list) {
+int maximum (std::vector<int>& list) {
     return *std::max_element(list.begin(), list.end());
 }
 
 //Calculates the most frequent value in the list
-int frequent (std::vector<int> list) {
+int frequent (std::vector<int>& list) {
     std::unordered_map<int, int> countMap;
 
     //Fills the unordered_map list with a number and its frequency.
@@ -52,7 +52,7 @@ int frequent (std::vector<int> list) {
 }
 
 //The difference between the minimum and maximum of the list
-int minmax(std::vector<int> list) {
+int minmax(std::vector<int>& list) {
     return maximum(list) - minimum(list);
 }
 
@@ -107,7 +107,7 @@ std::vector<int> readFileAndFillVector(const std::string& filename) {
 }
 
 //Prints things
-void prints (std::vector<int> numbers) {
+void prints (std::vector<int>& numbers) {
     std::cout << "The sum of the integers in the list: " << totalSum(numbers) << std::endl;
     std::cout << "The average of the integers in the list: " << average(numbers) << std::endl;
     std::cout << "The minimum value in the list: " << minimum(numbers) << std::endl;
