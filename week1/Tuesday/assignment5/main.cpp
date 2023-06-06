@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
+
 /*
 Exercise:  Book Management System
 
@@ -11,8 +13,9 @@ Books in the library have the following information. Title, Author, ISBN, Year, 
 There should be a function to display a book, add a book and remove a book, see if the book has been loaned or not.
 */
 
-//Structure for books
-struct Book{
+// Structure for books
+struct Book
+{
     std::string title;
     std::string author;
     std::string isbn;
@@ -20,28 +23,24 @@ struct Book{
     int quantity;
     bool loaned;
 
-    //Function to display information of the book.
-    void display () {
-        if(title == "0") {
-            return;
-        }
+    void display() {
         std::cout << std::endl;
-        std::cout << title << " by " << author << " " << year << std::endl;
-        std::cout << "ISBN: " << isbn << std::endl;
-        std::cout << "Quantity: " << quantity << std::endl;
-        if (loaned){
-            std::cout << "Loaned" << std::endl;
-        }
-        else {
-            std::cout << "Not loaned" << std::endl;
-        }
-    }
-    bool if_loaned () {
-        return loaned;
+            std::cout << title << " by " << author << " " << year << std::endl;
+            std::cout << "ISBN: " << isbn << std::endl;
+            std::cout << "Quantity: " << quantity << std::endl;
+            if (loaned)
+            {
+                std::cout << "Loaned" << std::endl;
+            }
+            else
+            {
+                std::cout << "Not loaned" << std::endl;
+            }
     }
 
-    //Function to add a book.
-    void add_book () {
+    // Function to add a book.
+    void add_book()
+    {
         std::cout << "Add a book:" << std::endl;
 
         std::cout << "Title: ";
@@ -67,71 +66,111 @@ struct Book{
 
         std::cout << "Book added." << std::endl;
     }
-
 };
 
-Book find_book(const std::vector<Book>& books) {
-    std::string input;
-    std::cout << "Enter book title: ";
-    std::getline(std::cin >> std::ws, input);
-
-    for (const auto& book : books) {
-        if (book.title == input) {
-            return book;
+//Finds book and prints info.
+void find_book(std::vector<Book>& books, const std::string& input)
+{
+    for (auto it = books.begin(); it != books.end(); ++it) {
+        if (it->title == input) {
+            std::cout << std::endl;
+            std::cout << it->title << " by " << it->author << " " << it->year << std::endl;
+            std::cout << "ISBN: " << it->isbn << std::endl;
+            std::cout << "Quantity: " << it->quantity << std::endl;
+            if (it->loaned)
+            {
+                std::cout << "Loaned" << std::endl;
+            }
+            else
+            {
+                std::cout << "Not loaned" << std::endl;
+            }
         }
     }
-
-    std::cout << "Book not found." << std::endl;
-    Book empty_book = {"0","0","0",0,0,false};
-    return empty_book;
-
+    std::cout << "Book not found" << std::endl;
 };
 
-void loan_book(std::vector<Book>& books) {
-    Book book = find_book(books);
-    if (book.title == "0") {
-        return;
+//Loans book (book.loaned will be true)
+void loan_book(std::vector<Book>& books, const std::string& input)
+{
+    for (auto it = books.begin(); it != books.end(); ++it) {
+        if (it->title == input && !it->loaned) {
+            it->loaned = true;
+            std::cout << "Book Loaned" <<std::endl;
+            return;
+        }
+        else if (it->title == input && it->loaned) {
+            std::cout << "Book already loaned" <<std::endl;
+            return;
+        }
     }
-    else if (!book.loaned) {
-        book.loaned = true;
-        std::cout << "Book loaned for you." << std::endl;
-    } else {
-        std::cout << "Book is loaned by someone." << std::endl;
+    std::cout << "Book not found" << std::endl;
+}
+
+// Removes book.
+void remove_book(std::vector<Book>& books, const std::string& input) {
+    for (auto it = books.begin(); it != books.end(); ++it) {
+        if (it->title == input) {
+            books.erase(it);
+            std::cout << "Book removed" << std::endl;
+            return;
+        }
     }
+    std::cout << "Book not found" << std::endl;
 }
 
 int main()
 {
     std::vector<Book> books;
-    std::cout << "Commands: add, display, find, loan and quit" << std::endl;
-    while (true) {
+    std::cout << "Commands: add, remove, display, find, loan and quit" << std::endl;
+    while (true)
+    {
         std::string input;
         std::cout << "> ";
         std::getline(std::cin, input);
 
-        if (input == "add") {
+        if (input == "add")
+        {
             Book new_book;
             new_book.add_book();
             books.push_back(new_book);
+        }
+        if (input == "remove")
+        {
+            std::string book;
+            std::cout << "Enter book: ";
+            std::getline(std::cin,book);
+            remove_book(books,book);
+        }
+        else if (input == "display")
+        {
+
+            for(auto book: books){
+                book.display();
+            }
+            std::cout << std::endl;
 
         }
-        else if (input == "display") {
-            for (auto book : books) {
-                book.display();
-                std::cout << std::endl;
-            }
+        else if (input == "find")
+        {
+            std::string book;
+            std::cout << "Enter book: ";
+            std::getline(std::cin,book);
+            find_book(books,book);
         }
-        else if (input == "find") {
-            Book book = find_book(books);
-            book.display();
+        else if (input == "loan")
+        {   
+            std::string book;
+            std::cout << "Enter book: ";
+            std::getline(std::cin,book);
+            loan_book(books,book);
         }
-        else if (input == "loan") {
-            loan_book(books);
-        }
-        else if (input == "quit") {
+        else if (input == "quit")
+        {
             return 0;
         }
-        else {
+        else
+        {
             std::cout << "Wrong input!" << std::endl;
         }
     }
