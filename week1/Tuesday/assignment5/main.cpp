@@ -32,6 +32,9 @@ struct Book{
             std::cout << "Not loaned" << std::endl;
         }
     }
+    bool if_loaned () {
+        return loaned;
+    }
 
     //Function to add a book.
     void add_book () {
