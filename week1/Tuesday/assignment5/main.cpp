@@ -22,6 +22,10 @@ struct Book{
 
     //Function to display information of the book.
     void display () {
+        if(title == "0") {
+            return;
+        }
+        std::cout << std::endl;
         std::cout << title << " by " << author << " " << year << std::endl;
         std::cout << "ISBN: " << isbn << std::endl;
         std::cout << "Quantity: " << quantity << std::endl;
@@ -66,10 +70,40 @@ struct Book{
 
 };
 
+Book find_book(const std::vector<Book>& books) {
+    std::string input;
+    std::cout << "Enter book title: ";
+    std::getline(std::cin >> std::ws, input);
+
+    for (const auto& book : books) {
+        if (book.title == input) {
+            return book;
+        }
+    }
+
+    std::cout << "Book not found." << std::endl;
+    Book empty_book = {"0","0","0",0,0,false};
+    return empty_book;
+
+};
+
+void loan_book(std::vector<Book>& books) {
+    Book book = find_book(books);
+    if (book.title == "0") {
+        return;
+    }
+    else if (!book.loaned) {
+        book.loaned = true;
+        std::cout << "Book loaned for you." << std::endl;
+    } else {
+        std::cout << "Book is loaned by someone." << std::endl;
+    }
+}
+
 int main()
 {
     std::vector<Book> books;
-    std::cout << "Commands: add, display, quit" << std::endl;
+    std::cout << "Commands: add, display, find, loan and quit" << std::endl;
     while (true) {
         std::string input;
         std::cout << "> ";
@@ -86,6 +120,13 @@ int main()
                 book.display();
                 std::cout << std::endl;
             }
+        }
+        else if (input == "find") {
+            Book book = find_book(books);
+            book.display();
+        }
+        else if (input == "loan") {
+            loan_book(books);
         }
         else if (input == "quit") {
             return 0;
