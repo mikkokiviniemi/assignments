@@ -1,0 +1,7 @@
+/home/mikkoki/in_progress/week2/Tuesday/assignment2_2_1/build/CMakeFiles/Orderingsystem.dir
+/home/mikkoki/in_progress/week2/Tuesday/assignment2_2_1/build/CMakeFiles/edit_cache.dir
+/home/mikkoki/in_progress/week2/Tuesday/assignment2_2_1/build/CMakeFiles/rebuild_cache.dir
+/home/mikkoki/in_progress/week2/Tuesday/assignment2_2_1/build/includes/CMakeFiles/utils.dir
+/home/mikkoki/in_progress/week2/Tuesday/assignment2_2_1/build/includes/CMakeFiles/food.dir
+/home/mikkoki/in_progress/week2/Tuesday/assignment2_2_1/build/includes/CMakeFiles/edit_cache.dir
+/home/mikkoki/in_progress/week2/Tuesday/assignment2_2_1/build/includes/CMakeFiles/rebuild_cache.dir
