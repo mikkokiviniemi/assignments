@@ -1,2 +1,0 @@
-/usr/bin/ar qc libfood.a CMakeFiles/food.dir/food.cpp.o
-/usr/bin/ranlib libfood.a

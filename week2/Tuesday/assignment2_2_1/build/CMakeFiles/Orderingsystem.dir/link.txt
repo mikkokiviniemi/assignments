@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/Orderingsystem.dir/main.cpp.o -o Orderingsystem  includes/libutils.a includes/libfood.a 
