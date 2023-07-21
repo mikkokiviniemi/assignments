@@ -1,6 +1,0 @@
-/home/mikkoki/in_progress/week2/Wednesday/assignment2_3_2/build/CMakeFiles/sensor.dir
-/home/mikkoki/in_progress/week2/Wednesday/assignment2_3_2/build/CMakeFiles/edit_cache.dir
-/home/mikkoki/in_progress/week2/Wednesday/assignment2_3_2/build/CMakeFiles/rebuild_cache.dir
-/home/mikkoki/in_progress/week2/Wednesday/assignment2_3_2/build/includes/CMakeFiles/utils.dir
-/home/mikkoki/in_progress/week2/Wednesday/assignment2_3_2/build/includes/CMakeFiles/edit_cache.dir
-/home/mikkoki/in_progress/week2/Wednesday/assignment2_3_2/build/includes/CMakeFiles/rebuild_cache.dir
