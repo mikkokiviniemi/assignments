@@ -2,6 +2,7 @@
 #define UTILS_H
 
 #include <iostream>
+#include <limits.h>
 
 class Instance {
     public:
@@ -28,6 +29,9 @@ class Positive_int {
             if (number < 0) {
                 throw std::invalid_argument("Can't be negative number!");
             }
+            else if (number > INT_MAX){
+                value = INT_MAX;
+            }
             value = number;
         };
         Positive_int(const Positive_int& other) : value(other.value){};
@@ -41,6 +45,9 @@ class Positive_int {
             if (number < 0) {
                 throw std::invalid_argument("Can't be negative number!");
             }
+            else if (number > INT_MAX){
+                value = INT_MAX;
+            }
             value = number;
             return *this;
         };
@@ -51,7 +58,8 @@ class Positive_int {
             int num2 = other.value;
             if(num1 - num2 > 0){
                 sum = num1 - num2;
-            } else {
+            } 
+            else {
                 sum = 0;
             }
             return sum;
@@ -62,7 +70,11 @@ class Positive_int {
             Positive_int sum;
             int num1 = value;
             int num2 = other.value;
-            sum = num1 + num2;
+            if (num1 + num2 > INT_MAX){
+                sum = INT_MAX;
+            } else {
+                sum = num1 + num2;
+            }
             return sum;
 
         };
@@ -75,8 +87,6 @@ class Positive_int {
     private:
         int value;
 };
-
-Positive_int add (const Positive_int& num1, const Positive_int& num2);
 
 
 #endif  
